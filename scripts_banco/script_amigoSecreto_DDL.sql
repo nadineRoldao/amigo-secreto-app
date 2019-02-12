@@ -1,11 +1,11 @@
-drop database amigo_secreto_app;
-create database amigo_secreto_app;
+-- drop database amigo_secreto_app;
+-- create database amigo_secreto_app;
 use amigo_secreto_app;
 
-drop table if exists amigo;
-drop table if exists grupo;
 drop table if exists grupo_amigo;
 drop table if exists grupo_postagem;
+drop table if exists amigo;
+drop table if exists grupo;
 
 create table amigo (
     id    		int   			not null auto_increment primary key,
