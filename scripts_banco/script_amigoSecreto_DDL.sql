@@ -39,3 +39,18 @@ create table grupo_postagem (
     texto       varchar(1000),
     link        varchar(255)
 );
+
+alter table grupo
+add foreign key (id_amigo) references amigo(id);
+
+alter table grupo_amigo
+add foreign key (id_amigo) references amigo(id);
+
+alter table grupo_amigo
+add foreign key (id_grupo) references grupo(id);
+
+alter table grupo_postagem
+add foreign key (id_amigo) references amigo(id);
+
+alter table grupo_postagem
+add foreign key (id_grupo) references grupo(id);
