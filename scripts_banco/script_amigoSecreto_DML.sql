@@ -25,20 +25,20 @@ insert into grupo (nome, id_amigo, data_sorteio, valor_min, valor_max) values ('
 insert into grupo_amigo (id_amigo, id_grupo, ativo) values (1, 1, 'y');
 insert into grupo_amigo (id_amigo, id_grupo, ativo) values (2, 1, 'y');
 insert into grupo_amigo (id_amigo, id_grupo, ativo) values (3, 1, 'y');
-insert into grupo_amigo (id_amigo, id_grupo, ativo) values (4, 1, 'y');
+insert into grupo_amigo (id_amigo, id_grupo, ativo) values (4, 1, 'n');
 insert into grupo_amigo (id_amigo, id_grupo, ativo) values (5, 1, 'y');
 insert into grupo_amigo (id_amigo, id_grupo, ativo) values (6, 1, 'y');
 insert into grupo_amigo (id_amigo, id_grupo, ativo) values (7, 1, 'y');
-insert into grupo_amigo (id_amigo, id_grupo, ativo) values (8, 1, 'y');
+insert into grupo_amigo (id_amigo, id_grupo, ativo) values (8, 1, 'n');
 insert into grupo_amigo (id_amigo, id_grupo, ativo) values (9, 1, 'y');
 insert into grupo_amigo (id_amigo, id_grupo, ativo) values (10, 1, 'y');
 
 insert into grupo_amigo (id_amigo, id_grupo, ativo) values (11, 2, 'y');
 insert into grupo_amigo (id_amigo, id_grupo, ativo) values (12, 2, 'y');
 insert into grupo_amigo (id_amigo, id_grupo, ativo) values (13, 2, 'y');
-insert into grupo_amigo (id_amigo, id_grupo, ativo) values (14, 2, 'y');
+insert into grupo_amigo (id_amigo, id_grupo, ativo) values (14, 2, 'n');
 insert into grupo_amigo (id_amigo, id_grupo, ativo) values (15, 2, 'y');
-insert into grupo_amigo (id_amigo, id_grupo, ativo) values (16, 2, 'y');
+insert into grupo_amigo (id_amigo, id_grupo, ativo) values (16, 2, 'n');
 insert into grupo_amigo (id_amigo, id_grupo, ativo) values (17, 2, 'y');
 insert into grupo_amigo (id_amigo, id_grupo, ativo) values (18, 2, 'y');
 insert into grupo_amigo (id_amigo, id_grupo, ativo) values (19, 2, 'y');
