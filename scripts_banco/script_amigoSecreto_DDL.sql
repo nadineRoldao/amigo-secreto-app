@@ -4,8 +4,8 @@ use amigo_secreto_app;
 
 drop table if exists grupo_amigo;
 drop table if exists grupo_postagem;
-drop table if exists amigo;
 drop table if exists grupo;
+drop table if exists amigo;
 
 create table amigo (
     id    		int   			not null auto_increment primary key,
@@ -27,7 +27,6 @@ create table grupo (
 create table grupo_amigo (
 	id_amigo            int  		   	not null,
     id_grupo            int    			not null,
-    id_amigo_sorteado   int             null,
     ativo               ENUM('y', 'n')  not null default 'n',
     primary key (id_grupo, id_amigo)
 );
