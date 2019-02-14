@@ -20,7 +20,7 @@ insert into amigo (nome, email, senha) values ('Gabriel', 'gabrielroldao@gmail.c
 insert into amigo (nome, email, senha) values ('Lucas', 'lucasroldao@gmail.com', '123456');
 
 insert into grupo (nome, id_amigo, data_sorteio, valor_min, valor_max) values ('Familia ', 2, null, 100.00, 100.00);
-insert into grupo (nome, id_amigo, data_sorteio, valor_min, valor_max) values ('Familia2', 9, null, 100.00, 100.00);
+insert into grupo (nome, id_amigo, data_sorteio, valor_min, valor_max) values ('Familia2', 12, null, 100.00, 100.00);
 
 insert into grupo_amigo (id_amigo, id_grupo, ativo) values (1, 1, 'y');
 insert into grupo_amigo (id_amigo, id_grupo, ativo) values (2, 1, 'y');
@@ -28,7 +28,7 @@ insert into grupo_amigo (id_amigo, id_grupo, ativo) values (3, 1, 'y');
 insert into grupo_amigo (id_amigo, id_grupo, ativo) values (4, 1, 'n');
 insert into grupo_amigo (id_amigo, id_grupo, ativo) values (5, 1, 'y');
 insert into grupo_amigo (id_amigo, id_grupo, ativo) values (6, 1, 'y');
-insert into grupo_amigo (id_amigo, id_grupo, ativo) values (7, 1, 'y');
+insert into grupo_amigo (id_amigo, id_grupo, ativo, id_amigo_sorteado) values (7, 1, 'y', 9);
 insert into grupo_amigo (id_amigo, id_grupo, ativo) values (8, 1, 'n');
 insert into grupo_amigo (id_amigo, id_grupo, ativo) values (9, 1, 'y');
 insert into grupo_amigo (id_amigo, id_grupo, ativo) values (10, 1, 'y');
@@ -44,5 +44,5 @@ insert into grupo_amigo (id_amigo, id_grupo, ativo) values (18, 2, 'y');
 insert into grupo_amigo (id_amigo, id_grupo, ativo) values (19, 2, 'y');
 insert into grupo_amigo (id_amigo, id_grupo, ativo) values (20, 2, 'y');
 
-insert into grupo_postagem (id_amigo, id_grupo, texto, link) values (2, 1, 'teste insert banco de cados', 'www.siteteste.com.br');
-insert into grupo_postagem (id_amigo, id_grupo, texto, link) values (4, 2, 'teste insert banco de cados', 'www.siteteste.com.br');
+insert into grupo_postagem (id_amigo, id_grupo, texto, link) values (2, 1, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 'www.google.com');
+insert into grupo_postagem (id_amigo, id_grupo, texto, link) values (4, 2, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 'www.facebook.com');
