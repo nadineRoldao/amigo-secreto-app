@@ -46,3 +46,18 @@ insert into grupo_amigo (id_amigo, id_grupo, ativo) values (20, 2, 'y');
 
 insert into grupo_postagem (id_amigo, id_grupo, texto, link) values (2, 1, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 'www.google.com');
 insert into grupo_postagem (id_amigo, id_grupo, texto, link) values (4, 2, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 'www.facebook.com');
+insert into grupo_postagem (id_amigo, id_grupo, texto, link) values (9, 1, 'Quero um presente legal.', 'www.facebook.com');
+insert into grupo_postagem (id_amigo, id_grupo, texto, link) values (9, 1, 'um rango legal, é o que procuramos.', 'www.facebook.com');
+
+
+
+
+
+
+
+
+
+
+
+
+

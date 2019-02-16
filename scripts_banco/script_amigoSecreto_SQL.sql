@@ -34,9 +34,6 @@ select a.id, a.nome
 where g.id = 1;
 
 -- exibir amigo sorteado
--- select a.nome 
--- from amigo a inner join grupo_amigo ga on a.
-
 select id, nome from amigo where id = (
 	select ga.id_amigo_sorteado
 		from amigo a inner join grupo_amigo ga on a.id = ga.id_amigo
@@ -44,18 +41,11 @@ select id, nome from amigo where id = (
 );
 
 -- listar mensagem do grupo
-
+select texto, link, data_postagem from grupo_postagem where id_grupo = 1;
 
 -- listar mensagem do amigo sorteado
-
-
-
-
-
-
-
-
-
-
-
--- id 7 e id 9 grupo 1
+select texto, link, data_postagem from grupo_postagem where id_amigo = (
+	select ga.id_amigo_sorteado
+		from amigo a inner join grupo_amigo ga on a.id = ga.id_amigo
+	where ga.id_amigo = 7 and ga.id_grupo = 1
+);
