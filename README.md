@@ -15,3 +15,7 @@ Toda a parte de armazenamento de dados será desenvolvida com MySQL.
     - consign para importação de módulos de forma simples
     - body-parser para ensinar o express a fazer parser de Json no corpo das requisições
     - express-validator para criar regras de validação de objetos enviado nos serviços.
+
+### criacao-conexao-db 
+- Adicionado driver MySql para node via npm
+- Criação do connectionFactory (arquivo que cria nossas conexões)
