@@ -19,3 +19,11 @@ Toda a parte de armazenamento de dados será desenvolvida com MySQL.
 ### criacao-conexao-db 
 - Adicionado driver MySql para node via npm
 - Criação do connectionFactory (arquivo que cria nossas conexões)
+
+### resource-amigo
+- Criação de amigoController (responsavel por receber as requisições do usuário (request), processa-los e devolver uma resposta(response) baseado em uma rota)
+- Implementado lógica que busca um amigo pelo id e pelo email e senha
+- Aprendi a diferença entre queryString e pathParam e como recupera-los usando o express
+    - queryString: localhost:3000/amigo/logar?email=matheusroldao@gmail.com&senha=123456
+    - pathParam: localhost:3000/amigos/9
+- Entendendo melhor o conceito de funções de callback
