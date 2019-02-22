@@ -17,4 +17,26 @@ AmigoRepository.prototype.buscarPorEmailESenha = (email, senha, callback) => {
     connection.query(SQL, [email, senha], callback);
 }
 
+AmigoRepository.prototype.deletar = (id, callback) => {
+    connection.query('DELETE FROM amigo WHERE id = ?', [id], callback);
+}
+
+AmigoRepository.prototype.atualizar = (amigo, callback) => {
+    const SQL = ' UPDATE amigo SET  nome   = ?,' +
+                '                   email  = ?,' +
+                '                   senha  = ?,' +
+                '                   imagem = ?'  +
+                ' WHERE id = ?';
+
+    const params = [
+        amigo.nome,
+        amigo.email,
+        amigo.senha,
+        amigo.imagem,
+        amigo.id
+    ]
+
+    connection.query(SQL, params, callback);
+}
+
 module.exports = () => AmigoRepository;
