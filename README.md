@@ -27,3 +27,4 @@ Toda a parte de armazenamento de dados será desenvolvida com MySQL.
     - queryString: localhost:3000/amigo/logar?email=matheusroldao@gmail.com&senha=123456
     - pathParam: localhost:3000/amigos/9
 - Entendendo melhor o conceito de funções de callback
+- Estudei sobre funções sincronas e asincronas e breve introdução do que são promisses

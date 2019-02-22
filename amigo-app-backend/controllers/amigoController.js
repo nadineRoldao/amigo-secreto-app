@@ -58,38 +58,21 @@ module.exports = (app) => {
         });
     });
 
-    // app.put('/clientes/atualizar', function(req, res){
-    //     let cliente = req.body;
-    //     let conn = app.repositories.connectionFactory();
-    //     let clienteRepository = new app.repositories.clienteRepository(conn);
-
-    //     clienteRepository.atualizar(cliente, function(err) {
-    //         if(err){
-    //            res.send('Não foi possível atualizar o cliente');
-    //         }
-    //         res.send('Sucesso!');
-    //     });
-    // });
-
     app.put('/amigos/atualizar/:id', (req, res) => {
-        let amigo;
         let id = req.params.id;
         let amigoAtualizar = req.body;
         let conn = app.repositories.connectionFactory();
         let amigoRepository = new app.repositories.amigoRepository(conn);
 
         amigoRepository.buscarPorId(id, (err, result) => {
-            this.amigo = result;
-        });
+            let amigoFinal = Object.assign({}, result[0], amigoAtualizar);
 
-        let amigoFinal = Object.assign({}, amigo, amigoAtualizar);
-
-        amigoRepository.atualizar(amigoFinal, (err) => {
-            if (err) {
-                res.send('Houve um erro');
-            }
-            res.send('SUCESSO!!');
+            amigoRepository.atualizar(amigoFinal, (err) => {
+                if (err) {
+                    res.send('Houve um erro');
+                }
+                res.send('SUCESSO!!');
+            });
         });
     });
-
 }
