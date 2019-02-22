@@ -28,3 +28,6 @@ Toda a parte de armazenamento de dados será desenvolvida com MySQL.
     - pathParam: localhost:3000/amigos/9
 - Entendendo melhor o conceito de funções de callback
 - Estudei sobre funções sincronas e asincronas e breve introdução do que são promisses
+
+### resouce-grupo
+- Criação de grupoController e grupoRepository e implementando o método de criação de grupo
