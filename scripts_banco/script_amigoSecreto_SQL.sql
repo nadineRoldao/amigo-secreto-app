@@ -16,9 +16,9 @@ update grupo_amigo set ativo = 'y' where id_amigo = 21 and id_grupo = 3;
 -- agendar sorteio
 
 -- listar amigos do grupo ativos
-select ga.id_amigo, a.nome
-	from amigo a inner join grupo_amigo ga on a.id = ga.id_amigo
-where ga.id_grupo = 1 and ga.ativo = 'y';
+SELECT ga.id_amigo, a.nome
+	FROM amigo a INNER JOIN grupo_amigo ga ON a.id = ga.id_amigo
+WHERE ga.id_grupo = 1 AND ga.ativo = 'y';
 
 -- listar amigos do grupo não ativos
 select ga.id_amigo, a.nome

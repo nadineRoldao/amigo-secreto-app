@@ -35,7 +35,7 @@ module.exports = (app) => {
         let conn = app.repositories.connectionFactory();
         let grupoRepository = new app.repositories.grupoRepository(conn);
 
-        grupoRepository.listarAmigosAtivos(id, (err, result) => {
+        grupoRepository.listarAmigos(id, 'y', (err, result) => {
             if (err) {
                 res.send('Houve um erro' + err);
                 return;
@@ -50,7 +50,7 @@ module.exports = (app) => {
         let conn = app.repositories.connectionFactory();
         let grupoRepository = new app.repositories.grupoRepository(conn);
 
-        grupoRepository.listarAmigosInativos(id, (err, result) => {
+        grupoRepository.listarAmigos(id, 'n', (err, result) => {
             if (err) {
                 res.send('Houve um erro' + err);
                 return;

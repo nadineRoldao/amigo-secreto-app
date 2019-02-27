@@ -31,3 +31,4 @@ Toda a parte de armazenamento de dados será desenvolvida com MySQL.
 
 ### resouce-grupo
 - Criação de grupoController e grupoRepository e implementando o método de criação de grupo
+- Implementação dos metodos de deletar grupo e listar amigos ativos e inativos
