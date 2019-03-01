@@ -49,3 +49,5 @@ select texto, link, data_postagem from grupo_postagem where id_amigo = (
 		from amigo a inner join grupo_amigo ga on a.id = ga.id_amigo
 	where ga.id_amigo = 7 and ga.id_grupo = 1
 );
+
+-- atualizar
