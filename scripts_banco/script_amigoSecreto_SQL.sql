@@ -26,10 +26,10 @@ select ga.id_amigo, a.nome
 where ga.id_grupo = 1 and ga.ativo = 'n';
 
 -- trocar moderador
-update grupo set id_amigo = 5 where id_grupo = 1;
+update grupo set id_amigo = 5 where id = 1;
 
 -- exibir moderador 
-select a.id, a.nome
+select a.nome
 	from amigo a inner join grupo g on a.id = g.id_amigo
 where g.id = 1;
 
@@ -49,5 +49,8 @@ select texto, link, data_postagem from grupo_postagem where id_amigo = (
 		from amigo a inner join grupo_amigo ga on a.id = ga.id_amigo
 	where ga.id_amigo = 7 and ga.id_grupo = 1
 );
+
+-- buscar grupo por nome
+select g.id, g.nome, g.id_amigo, g.data_sorteio, g.valor_min, g.valor_max, g.data_evento, g.local_evento, a.nome from grupo g inner join amigo a on g.id_amigo = a.id where trim(g.nome) like '%Fam%';
 
 -- atualizar

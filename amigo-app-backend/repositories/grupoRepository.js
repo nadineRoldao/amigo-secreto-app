@@ -38,4 +38,46 @@ GrupoRepository.prototype.exibirAmigoSorteado = (id_amigo, id_grupo, callback) =
     +'WHERE ga.id_amigo = ? AND ga.id_grupo = ?)', [id_amigo, id_grupo], callback);
 }
 
+GrupoRepository.prototype.buscarGrupoPorNome = (termo, callback) => {
+    termo = '%' + termo.trim() + '%';
+    connection.query("SELECT g.id, g.nome, g.id_amigo, g.data_sorteio, g.valor_min, g.valor_max, g.data_evento, g.local_evento, a.nome FROM grupo g INNER JOIN amigo a ON g.id_amigo = a.id WHERE TRIM(g.nome) LIKE ?", [termo], callback);
+}
+
+GrupoRepository.prototype.listarMensagensAmigoSorteado = (id_amigo, id_grupo, callback) => {
+    connection.query('SELECT texto, link, data_postagem FROM grupo_postagem WHERE id_amigo = (' 
+    + 'SELECT ga.id_amigo_sorteado ' 
+    + 'FROM amigo a INNER JOIN grupo_amigo ga ON a.id = ga.id_amigo '
+    + 'WHERE ga.id_amigo = ? AND ga.id_grupo = ?)', [id_amigo, id_grupo], callback);
+}
+
+GrupoRepository.prototype.listarMensagensGrupo = (id_grupo, callback) => {
+    connection.query('SELECT texto, link, data_postagem FROM grupo_postagem WHERE id_grupo = ?', [id_grupo], callback);
+}
+
+GrupoRepository.prototype.buscarGrupoPorId = (id, callback) => {
+    connection.query('SELECT * FROM grupo WHERE id = ?', [id], callback);
+}
+
+GrupoRepository.prototype.atualizarGrupo = (grupo, callback) => {
+    const SQL = ' UPDATE grupo SET  nome          = ?,' +
+                '                   data_sorteio  = ?,' +
+                '                   valor_min     = ?,' +
+                '                   valor_max     = ?,'  +
+                '                   data_evento   = ?,'  +
+                '                   local_evento  = ?'  +
+                ' WHERE id = ?';
+
+    const params = [
+        grupo.nome,
+        grupo.data_sorteio,
+        grupo.valor_min,
+        grupo.valor_max,
+        grupo.data_evento,
+        grupo.local_evento,
+        grupo.id
+    ]
+    connection.query(SQL, params, callback);
+}
+
+
 module.exports = () => GrupoRepository;

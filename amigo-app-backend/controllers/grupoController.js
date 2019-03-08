@@ -138,4 +138,66 @@ module.exports = (app) => {
         });
 
     });
+
+    app.get('/grupo/buscarGrupoPorNome/:termo', (req, res) => {
+        let nomeGrupo = req.params.termo;
+        let conn = app.repositories.connectionFactory();
+        let grupoRepository = new app.repositories.grupoRepository(conn);
+
+        grupoRepository.buscarGrupoPorNome(nomeGrupo, (err, result) => {
+            if (err) {
+                res.send('Houve um erro' + err);
+                return;
+            }
+            res.send(result);
+        });
+    });
+
+    app.get('/grupo/listarMensagensAmigoSorteado/:id_amigo/:id_grupo', (req, res) => {
+        let idAmigo = req.params.id_amigo;
+        let idGrupo = req.params.id_grupo;
+        let conn = app.repositories.connectionFactory();
+        let grupoRepository = new app.repositories.grupoRepository(conn);
+
+        grupoRepository.listarMensagensAmigoSorteado(idAmigo, idGrupo, (err, result) => {
+            if (err) {
+                res.send('Houve um erro' + err);
+                return;
+            }
+            res.send(result);
+        });
+    });
+
+    app.get('/grupo/listarMensagensGrupo/:id_grupo', (req, res) => {
+        let idGrupo = req.params.id_grupo;
+        let conn = app.repositories.connectionFactory();
+        let grupoRepository = new app.repositories.grupoRepository(conn);
+
+        grupoRepository.listarMensagensGrupo(idGrupo, (err, result) => {
+            if (err) {
+                res.send('Houve um erro' + err);
+                return;
+            }
+            res.send(result);
+        });
+    });
+
+    app.put('/grupo/atualizarGrupo/:id', (req, res) => {
+        let id = req.params.id;
+        let grupoAtualizar = req.body;
+        
+        let conn = app.repositories.connectionFactory();
+        let grupoRepository = new app.repositories.grupoRepository(conn);
+
+        grupoRepository.buscarGrupoPorId(id, (err,result) => {
+            let grupoFinal = Object.assign({}, result[0], grupoAtualizar);
+
+            grupoRepository.atualizarGrupo(grupoFinal, (err) => {
+                if (err) {
+                    res.send('Houve um erro' + err);
+                }
+                res.send('SUCESSO!!');
+            });
+        });
+    });
 }
