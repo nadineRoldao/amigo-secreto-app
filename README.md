@@ -40,9 +40,10 @@ Toda a parte de armazenamento de dados será desenvolvida com MySQL.
     - Trocar de moderador
     - Exibir moderador
     - Exibir amigo sorteado
-- Implementação dos metodos 
+    - Implementação dos metodos 
     - Buscar grupo por nome
     - Listar mensagens do amigo sorteado
     - listar mensagens do grupo
     - Buscar grupo or ID
     - Atualizar grupo
+- Criação da postagem da mensagem no grupo

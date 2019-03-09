@@ -79,5 +79,8 @@ GrupoRepository.prototype.atualizarGrupo = (grupo, callback) => {
     connection.query(SQL, params, callback);
 }
 
+GrupoRepository.prototype.postarMensagem = (grupo_postagem, callback) => {
+    connection.query('INSERT INTO grupo_postagem SET ?', grupo_postagem, callback);
+}
 
 module.exports = () => GrupoRepository;

@@ -200,4 +200,18 @@ module.exports = (app) => {
             });
         });
     });
+
+    app.post('/grupo/postarMensagem', (req, res) => {
+        let grupoPostagem = req.body;
+        let conn = app.repositories.connectionFactory();
+        let grupoRepository = new app.repositories.grupoRepository(conn);
+
+        grupoRepository.postarMensagem(grupoPostagem, (err) => {
+            if (err) {
+                res.send('Houve um erro --------------' + err);
+                return;
+            }
+            res.send('SUCESSO!');
+        });
+    });
 }
