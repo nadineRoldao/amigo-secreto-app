@@ -211,7 +211,46 @@ module.exports = (app) => {
                 res.send('Houve um erro --------------' + err);
                 return;
             }
-            res.send('SUCESSO!');
+            res.send('SUCESSO!!');
         });
     });
+
+    app.put('/grupo/realizarSorteio/:id_grupo', (req, res) => {
+        let idGrupo = req.params.id_grupo;
+        let conn = app.repositories.connectionFactory();
+        let grupoRepository = new app.repositories.grupoRepository(conn);
+
+        grupoRepository.listarAmigos(idGrupo, 'y', (err, result) => {
+            let listaId = result.map(item => {
+                return item.id_amigo;
+            });
+
+            let copiaListaId = listaId.slice();
+        });
+    });
+
+    let ObjAmigoSorteado = function(idAmigo, idAmigoSorteado){
+        /*  um objeto javaScript é feito por chave: valor, se o nome da chave e do valor for igual, 
+            não precisa colocar (:valor), pois ele já entende que os nomes são iguais */
+        return {
+            idAmigo,
+            idAmigoSorteado
+        };
+    }
+
+
+
+
+
+
+
+    /** 
+     * copiaLista.forEach(item => {
+     *  
+     * });
+     */
+
+
+    
+
 }
