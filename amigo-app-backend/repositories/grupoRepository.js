@@ -83,9 +83,16 @@ GrupoRepository.prototype.postarMensagem = (grupo_postagem, callback) => {
     connection.query('INSERT INTO grupo_postagem SET ?', grupo_postagem, callback);
 }
 
-GrupoRepository.prototype.atualizarGrupoAmigo = (grupo_amigo, callback) => {
-    connection.query('UPDATE grupo_amigo SET id_amigo_sorteado = ? WHERE id_grupo = ? AND id_amigo', 
-    [grupo_amigo.id_amigo_sorteado, grupo_amigo.id_grupo, grupo_amigo.id_amigo], callback);
+GrupoRepository.prototype.atualizarGrupoAmigo = (idAmigoSorteado, idGrupo, idAmigo, callback) => {
+    connection.query('UPDATE grupo_amigo SET id_amigo_sorteado = ? WHERE id_grupo = ? AND id_amigo = ?', 
+    [idAmigoSorteado, idGrupo, idAmigo], callback);
 } 
 
+GrupoRepository.prototype.desfazerSorteio = (idGrupo, callback) => {
+    connection.query('UPDATE grupo_amigo SET id_amigo_sorteado = null WHERE id_grupo = ?', [idGrupo], callback);
+}
+
+GrupoRepository.prototype.sairDoGrupo = (idAmigo, idGrupo, callback) => {
+    connection.query('DELETE FROM grupo_amigo WHERE id_amigo = ? and id_grupo = ?', [idAmigo, idGrupo], callback);
+}
 module.exports = () => GrupoRepository;

@@ -215,42 +215,69 @@ module.exports = (app) => {
         });
     });
 
-    app.put('/grupo/realizarSorteio/:id_grupo', (req, res) => {
-        let idGrupo = req.params.id_grupo;
+    app.put('/grupo/realizar-sorteio/:idGrupo', (req, res) => {
+        let idGrupo = req.params.idGrupo;
         let conn = app.repositories.connectionFactory();
         let grupoRepository = new app.repositories.grupoRepository(conn);
 
-        grupoRepository.listarAmigos(idGrupo, 'y', (err, result) => {
-            let listaId = result.map(item => {
-                return item.id_amigo;
+        grupoRepository.listarAmigos(idGrupo, 'y', (err, amigos) => {
+            const ids = amigos.map(amigo => amigo.id_amigo);
+            let copiaIds = ids.slice();
+            let listaSorteio = [];
+
+            ids.forEach (id =>{
+                let idsSortear = copiaIds.filter(idsSortear => id !== idsSortear);
+                let numeroAleatorio = parseInt(Math.random() * idsSortear.length);
+                let idAmigoSorteado = idsSortear[numeroAleatorio];
+
+                listaSorteio.push({
+                    idAmigo: id,
+                    idAmigoSorteado: idAmigoSorteado
+                });
+                copiaIds = copiaIds.filter(item => item != idAmigoSorteado);
             });
 
-            let copiaListaId = listaId.slice();
+            console.log( listaSorteio );
+            
+            
+            listaSorteio.forEach(sorteio => {
+                grupoRepository.atualizarGrupoAmigo(sorteio.idAmigoSorteado, idGrupo, sorteio.idAmigo, (err) => {
+                    if (err) {
+                        console.log('Houve um erro: ' + err);
+                        res.send('----- ERRO -----' + err);
+                    }
+                });
+            });
+
+        });             
+        res.send("SUCESSO!!");
+    });
+
+    app.put('/grupo/desfazer-sorteio/:idGrupo', (req, res) => {
+        let idGrupo = req.params.idGrupo;
+        let conn = app.repositories.connectionFactory();
+        let grupoRepository = new app.repositories.grupoRepository(conn);
+
+        grupoRepository.desfazerSorteio(idGrupo, (err) => {
+            if (err) {
+                res.send('Houve um erro ' + err);
+            }
+            res.send('SUCESSO!!');
         });
     });
 
-    let ObjAmigoSorteado = function(idAmigo, idAmigoSorteado){
-        /*  um objeto javaScript é feito por chave: valor, se o nome da chave e do valor for igual, 
-            não precisa colocar (:valor), pois ele já entende que os nomes são iguais */
-        return {
-            idAmigo,
-            idAmigoSorteado
-        };
-    }
+    app.delete('/grupo/sair-do-grupo/:idAmigo/:idGrupo', (req, res) => {
+        let idAmigo = req.params.idAmigo;
+        let idGrupo = req.params.idGrupo;
+        let conn = app.repositories.connectionFactory();
+        let grupoRepository = new app.repositories.grupoRepository(conn);
 
-
-
-
-
-
-
-    /** 
-     * copiaLista.forEach(item => {
-     *  
-     * });
-     */
-
-
-    
-
+        grupoRepository.sairDoGrupo(idAmigo, idGrupo, (err) => {
+            if(err){
+                res.send('Houve um erro::::::::::::::::::::::::::::::::::::::::: ' + err);
+                return;
+               }
+               res.send('SUCESSO!!');
+        });
+    });
 }

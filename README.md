@@ -47,3 +47,6 @@ Toda a parte de armazenamento de dados será desenvolvida com MySQL.
     - Buscar grupo or ID
     - Atualizar grupo
 - Criação da postagem da mensagem no grupo
+- Criação da query que realiza o sorteio
+- Criação da query que desfaz o sorteio
+- Criação da query que remove um amigo do grupo
